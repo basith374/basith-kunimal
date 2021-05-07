@@ -1,121 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+  font-family: Poppins;
+}
+.hero {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.intro {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  width: 40%;
+  background: #3f3697;
+  color: #fff;
 }
-
-.main {
-  padding: 5rem 0;
+.intro h1 {
+  font-size: 120px;
+  line-height: 120px;
+  margin: 0;
+}
+.backgrounds {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.profile {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  background-image: url(/basith.jpg);
+  background-size: cover;
+  background-position-x: -40px;
+  border-radius: 150px;;
 }
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.clip {
+  height: 400px;
+  width: 400px;
+  border-radius: 200px;
+  border: 2px dashed #777;
+  margin: auto;
+  opacity: 0;
+  transition: 200ms all linear;
+  transform: scale(.8);
 }
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.clipContainer {
+  animation: counter-rotate 50s infinite;
+  position: absolute;
+  top: -50px;
+  left: -50px;
 }
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.profile:hover .clip {
+  opacity: 1;
+  transform: scale(1);
 }
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+.icons {
+  position: absolute;
+  left: -150px;
+  top: -150px;
+  height: 600px;
+  width: 600px;
+  margin: auto;
+  animation: rotate 90s infinite linear;
 }
-
-.title,
-.description {
-  text-align: center;
+.iconsContainer {
+  opacity: 0;
+  transform: scale(.8);
+  transition: 200ms all;
+  pointer-events: none;
+  animation: 200ms flower;
 }
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
+@keyframes flower {
+  from { opacity: 0; transform: scale(.8); }
+  to   { opacity: 1; transform: scale(1); }
 }
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+.profile:hover .iconsContainer {
+  opacity: 1;
+  transform: scale(1);
 }
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+.icons svg {
+  position: absolute;
+  width: 100px;
+  animation: counter-rotate 90s infinite linear;
 }
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
+@keyframes rotate {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
 }
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+@keyframes counter-rotate {
+  from { transform: rotate(360deg) }
+  to { transform: rotate(0deg) }
 }
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.reveal {
+  animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
 }
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@keyframes text-clip {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
