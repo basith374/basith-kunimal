@@ -5,7 +5,6 @@
 }
 .hero {
   height: 100vh;
-  display: flex;
   overflow: hidden;
 }
 .intro {
@@ -13,9 +12,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40%;
   background: #3f3697;
   color: #fff;
+  height: 100%;
+  animation: slide-in 500ms .9s cubic-bezier(0.33, 1, 0.68, 1) both;
+  float: left;
 }
 .intro h1 {
   font-size: 120px;
@@ -23,11 +24,17 @@
   margin: 0;
 }
 .backgrounds {
-  flex: 1;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  float: left;
+  height: 100%;
+}
+@keyframes slide-in {
+  from { width: 100%; }
+  to { width: 40%; }
 }
 .profile {
   position: relative;
@@ -36,7 +43,12 @@
   background-image: url(/basith.jpg);
   background-size: cover;
   background-position-x: -40px;
-  border-radius: 150px;;
+  border-radius: 150px;
+  animation: appear 500ms 1.4s both;
+}
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .clip {
   height: 400px;
@@ -44,9 +56,7 @@
   border-radius: 200px;
   border: 2px dashed #777;
   margin: auto;
-  opacity: 0;
-  transition: 200ms all linear;
-  transform: scale(.8);
+  animation: flower 400ms 1.5s both;
 }
 .clipContainer {
   animation: counter-rotate 50s infinite;
@@ -68,19 +78,12 @@
   animation: rotate 90s infinite linear;
 }
 .iconsContainer {
-  opacity: 0;
-  transform: scale(.8);
-  transition: 200ms all;
   pointer-events: none;
-  animation: 200ms flower;
+  animation: flower 300ms 1.6s both;
 }
 @keyframes flower {
   from { opacity: 0; transform: scale(.8); }
   to   { opacity: 1; transform: scale(1); }
-}
-.profile:hover .iconsContainer {
-  opacity: 1;
-  transform: scale(1);
 }
 .icons svg {
   position: absolute;
