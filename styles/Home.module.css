@@ -15,8 +15,15 @@
   background: #3f3697;
   color: #fff;
   height: 100%;
-  animation: slide-in 500ms .9s cubic-bezier(0.33, 1, 0.68, 1) both;
-  float: left;
+  position: relative;
+  z-index: 1;
+}
+.intro.ready {
+  animation: slide-in 800ms .9s cubic-bezier(0.85, 0, 0.15, 1) both;
+}
+@keyframes slide-in {
+  from { width: 100%; }
+  to { width: 40%; }
 }
 .intro h1 {
   font-size: 120px;
@@ -28,13 +35,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  float: left;
+  position: absolute;
+  top: 0;
+  right: 0;
   height: 100%;
-}
-@keyframes slide-in {
-  from { width: 100%; }
-  to { width: 40%; }
 }
 .profile {
   position: relative;

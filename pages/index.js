@@ -1,11 +1,19 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import assets from '../lib/assets'
 import styles from '../styles/Home.module.css'
 
 function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  useEffect(() => {
+    const image = new Image();
+    image.src = '/basith.jpg';
+    image.onload = function() {
+      setImageLoaded(true)
+    };
+  }, []);
   return <div className={styles.hero}>
-    <div className={styles.intro}>
+    <div className={[styles.intro].concat(imageLoaded ? styles.ready: []).join(' ')}>
       <div>
         <div>
           <h1><span className={styles.reveal}>Basith</span><br /><span className={styles.reveal}>Kunimal</span></h1>
