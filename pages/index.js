@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import assets from "../lib/assets";
 import styles from "../styles/Home.module.css";
+import Blogs from "../lib/Blogs";
 
 function getRandomString(length) {
   var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*@?+!";
@@ -26,6 +27,7 @@ function getTransitionString(labels, idx) {
 function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const title = useRef();
+  const blue = useRef();
   useEffect(() => {
     const image = new Image();
     image.src = "/basi.jpg";
@@ -55,8 +57,18 @@ function Hero() {
       }
       j++;
     }, 2000);
+    function onScroll(e) {
+      if(window.innerWidth > 600) {
+        const max = window.innerHeight;
+        const scrolled = e.target.documentElement.scrollTop;
+        const op = (Math.max(0, 1 - scrolled / max)).toFixed(2);
+        blue.current.style.background = 'rgba(63, 54, 151, ' + op  + ')';
+      }
+    }
+    document.addEventListener("scroll", onScroll);
     return () => {
       clearInterval(interval);
+      document.removeEventListener("scroll", onScroll);
     };
   }, []);
   return (
@@ -65,6 +77,7 @@ function Hero() {
         className={[styles.intro]
           .concat(imageLoaded ? styles.ready : [])
           .join(" ")}
+        ref={blue}
       >
         <div>
           <div>
@@ -112,15 +125,6 @@ function Hero() {
   );
 }
 
-function Intro() {
-  return (
-    <div className={styles.hero}>
-      <div style={{ width: "40%" }}></div>
-      <div className={styles.intro} style={{ flex: 1 }}></div>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -128,11 +132,15 @@ export default function Home() {
         <title>Basith Kunimal</title>
         <meta name="description" content="Web developer" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="keywords" content="reactjs,programmer,coder,software,techie,html,javascript,css,mysql,profile,nextjs" />
+        <meta
+          name="keywords"
+          content="reactjs,programmer,coder,software,techie,html,javascript,css,mysql,profile,nextjs"
+        />
       </Head>
 
       <main className={styles.main}>
         <Hero />
+        <Blogs />
       </main>
 
       <footer className={styles.footer}></footer>

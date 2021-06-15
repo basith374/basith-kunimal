@@ -1,0 +1,49 @@
+.container {
+  border-radius: 8px;
+  margin: 0 0 2em;
+  overflow: hidden;
+  height: 400px;
+  display: block;
+}
+@media screen and (min-width: 600px) {
+  .container {
+    width: 400px;
+    margin: 0 1em 2em;
+  }
+}
+.text {
+  color: #333;
+  background: #eee;
+  font-size: 15px;
+  padding: 1.5em 2em;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.desc {
+  color: #555;
+  flex: 1;
+}
+.image {
+  height: 180px;
+  text-align: center;
+  background: #ddd;
+}
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+.image.fit img {
+  width: auto;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+}
