@@ -112,8 +112,8 @@ function Hero() {
               {assets.map((f, key) => {
                 const index = parseInt(key, 10) / assets.length;
                 const r = ICONS_CONTAINER_WIDTH / 2;
-                const left = 250 + r * Math.cos(2 * Math.PI * index);
-                const top = 250 + r * Math.sin(2 * Math.PI * index);
+                const left = 200 + r * Math.cos(2 * Math.PI * index);
+                const top = 200 + r * Math.sin(2 * Math.PI * index);
                 return React.cloneElement(f, {
                   key,
                   style: { left, top },
