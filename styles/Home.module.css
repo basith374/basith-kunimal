@@ -71,8 +71,8 @@
 }
 .profile {
   position: relative;
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   background-image: url(/basi.jpg);
   background-size: cover;
   border-radius: 150px;
@@ -92,8 +92,8 @@
   to { opacity: 1; }
 }
 .clip {
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   border-radius: 200px;
   border: 2px dashed #777;
   margin: auto;
@@ -113,10 +113,10 @@
 }
 .icons {
   position: absolute;
-  left: -150px;
-  top: -150px;
-  height: 600px;
-  width: 600px;
+  left: -125px;
+  top: -125px;
+  height: 500px;
+  width: 500px;
   margin: auto;
   animation: rotate 90s infinite linear;
 }
@@ -136,7 +136,7 @@
 }
 .icons svg {
   position: absolute;
-  width: 100px;
+  width: 80px;
   animation: counter-rotate 90s infinite linear;
 }
 @keyframes rotate {
