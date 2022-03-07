@@ -42,14 +42,14 @@
   to { width: 40%; }
 }
 .intro h1 {
-  font-size: 80px;
-  line-height: 80px;
+  font-size: 60px;
+  line-height: 60px;
   margin: 0;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1200px) {
   .intro h1 {
-    font-size: 120px;
-    line-height: 120px;
+    font-size: 80px;
+    line-height: 80px;
   }
 }
 .backgrounds {
