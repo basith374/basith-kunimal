@@ -24,6 +24,8 @@ function getTransitionString(labels, idx) {
   return getRandomString(length);
 }
 
+const ICONS_CONTAINER_WIDTH = 500;
+
 function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const title = useRef();
@@ -109,7 +111,7 @@ function Hero() {
             <div className={styles.icons}>
               {assets.map((f, key) => {
                 const index = parseInt(key, 10) / assets.length;
-                const r = 300;
+                const r = ICONS_CONTAINER_WIDTH / 2;
                 const left = 250 + r * Math.cos(2 * Math.PI * index);
                 const top = 250 + r * Math.sin(2 * Math.PI * index);
                 return React.cloneElement(f, {
