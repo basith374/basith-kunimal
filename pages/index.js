@@ -60,11 +60,11 @@ function Hero() {
       j++;
     }, 2000);
     function onScroll(e) {
-      if(window.innerWidth > 600) {
+      if (window.innerWidth > 600) {
         const max = window.innerHeight;
         const scrolled = e.target.documentElement.scrollTop;
-        const op = (Math.max(0, 1 - scrolled / max)).toFixed(2);
-        blue.current.style.background = 'rgba(63, 54, 151, ' + op  + ')';
+        const op = Math.max(0, 1 - scrolled / max).toFixed(2);
+        blue.current.style.backgroundImage = `linear-gradient(120deg, rgba(240, 147, 251, ${op}) 0%, rgba(245, 87, 108, ${op}) 100%)`;
       }
     }
     document.addEventListener("scroll", onScroll);
@@ -96,7 +96,7 @@ function Hero() {
           </div>
           <div className={styles.links + " " + styles.reveal}>
             <a href="https://github.com/basith374">Github</a>
-            <a href="https://standardresume.co/r/basith">Resume</a>
+            <a href="https://standardresume.co/r/basithk">Resume</a>
             <a href="https://www.linkedin.com/in/basithk/">LinkedIn</a>
             {/* <a href="https://stackoverflow.com/cv/bazi">Stackoverflow</a> */}
           </div>
@@ -108,12 +108,16 @@ function Hero() {
             <div className={styles.clip}></div>
           </div>
           <div className={styles.iconsContainer}>
+            <div className={styles.border}></div>
+            <div className={styles.border2}></div>
+            <div className={styles.border3}></div>
             <div className={styles.icons}>
               {assets.map((f, key) => {
                 const index = parseInt(key, 10) / assets.length;
                 const r = ICONS_CONTAINER_WIDTH / 2;
-                const left = 200 + r * Math.cos(2 * Math.PI * index);
-                const top = 200 + r * Math.sin(2 * Math.PI * index);
+                const left = 210 + r * Math.cos(2 * Math.PI * index);
+                const top = 210 + r * Math.sin(2 * Math.PI * index);
+                {/* return <div className={styles.box} style={{ left, top }} />; */}
                 return React.cloneElement(f, {
                   key,
                   style: { left, top },

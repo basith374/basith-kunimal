@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #3f3697;
+  background-image: linear-gradient(120deg, rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%);
   color: #fff;
   height: 100%;
   position: relative;
@@ -138,6 +138,39 @@
   position: absolute;
   width: 80px;
   animation: counter-rotate 90s infinite linear;
+}
+.border, .border2, .border3 {
+  position: absolute;
+  border-radius: 100%;
+  border: 5px dotted #eee;
+}
+.border {
+  width: 800px;
+  height: 800px;
+  left: -275px;
+  top: -275px;
+  animation: counter-rotate 90s infinite linear;
+}
+.border2 {
+  width: 850px;
+  height: 850px;
+  left: -300px;
+  top: -300px;
+  animation: rotate 90s infinite linear;
+}
+.border3 {
+  width: 900px;
+  height: 900px;
+  left: -325px;
+  top: -325px;
+  animation: counter-rotate 90s infinite linear;
+}
+/* for testing */
+.box {
+  width: 80px;
+  height: 80px;
+  background: black;
+  position: absolute;
 }
 @keyframes rotate {
   from { transform: rotate(0deg) }
