@@ -48,7 +48,13 @@ function Medium() {
   </svg>;
 }
 
-function Image({ image, name, contain }) {
+type ImageProps = {
+  image: string
+  name: string
+  contain: string
+}
+
+function Image({ image, name, contain }: ImageProps) {
   const classes = [styles.image]
   if(contain) classes.push(styles.fit);
   return <div className={classes.join(' ')}>
@@ -56,7 +62,15 @@ function Image({ image, name, contain }) {
   </div>
 }
 
-export default function Card({ name, desc, image, link, contain }) {
+type CardProps = {
+  image: string
+  name: string
+  contain: string
+  desc: string
+  link: string
+}
+
+export default function Card({ name, desc, image, link, contain }: CardProps) {
   return (
     <a className={styles.container} href={link}>
       <Image {...{ image, name, contain }} />

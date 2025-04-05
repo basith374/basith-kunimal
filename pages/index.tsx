@@ -1,10 +1,11 @@
 import Head from "next/head";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import assets from "../lib/assets";
 import styles from "../styles/Home.module.css";
 import Blogs from "../lib/Blogs";
 
-function getRandomString(length) {
+function getRandomString(length: number) {
   var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*@?+!";
   var result = "";
   for (var i = 0; i < length; i++) {
@@ -15,12 +16,12 @@ function getRandomString(length) {
   return result;
 }
 
-function getTransitionString(labels, idx) {
+function getTransitionString(labels: string[], idx: number) {
   const from = labels[idx % labels.length];
   const to = labels[(idx + 1) % labels.length];
   const min = Math.min(from.length, to.length);
   const max = Math.max(from.length, to.length);
-  const length = min + parseInt(Math.random() * (max - min));
+  const length = min + Math.floor(Math.random() * (max - min));
   return getRandomString(length);
 }
 
@@ -28,8 +29,8 @@ const ICONS_CONTAINER_WIDTH = 500;
 
 function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const title = useRef();
-  const blue = useRef();
+  const title = useRef<HTMLDivElement>(null);
+  const blue = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const image = new Image();
     image.src = "/basi.jpg";
@@ -54,17 +55,21 @@ function Hero() {
             i === len - 1
               ? labels[j % labels.length]
               : getTransitionString(labels, j);
-          title.current.innerText = str;
+          if (title.current) {
+            title.current.innerText = str;
+          }
         }, i * 20);
       }
       j++;
     }, 2000);
-    function onScroll(e) {
+    const onScroll = (e: Event) => {
       if (window.innerWidth > 600) {
         const max = window.innerHeight;
-        const scrolled = e.target.documentElement.scrollTop;
+        const scrolled = (e.target as HTMLDivElement).scrollTop;
         const op = Math.max(0, 1 - scrolled / max).toFixed(2);
-        blue.current.style.backgroundImage = `linear-gradient(120deg, rgba(240, 147, 251, ${op}) 0%, rgba(245, 87, 108, ${op}) 100%)`;
+        if (blue.current) {
+          blue.current.style.backgroundImage = `linear-gradient(120deg, rgba(240, 147, 251, ${op}) 0%, rgba(245, 87, 108, ${op}) 100%)`;
+        }
       }
     }
     document.addEventListener("scroll", onScroll);
@@ -90,13 +95,13 @@ function Hero() {
             </h1>
           </div>
           <div>
-            <h2 className={styles.title} className={styles.reveal} ref={title}>
+            <h2 className={[styles.title, styles.reveal].join(' ')} ref={title}>
               Fullstack Developer
             </h2>
           </div>
           <div className={styles.links + " " + styles.reveal}>
             <a href="https://github.com/basith374">Github</a>
-            <a href="https://standardresume.co/r/basithk">Resume</a>
+            <Link href="/resume">Resume</Link>
             <a href="https://www.linkedin.com/in/basithk/">LinkedIn</a>
             {/* <a href="https://stackoverflow.com/cv/bazi">Stackoverflow</a> */}
           </div>
@@ -113,11 +118,11 @@ function Hero() {
             <div className={styles.border3}></div>
             <div className={styles.icons}>
               {assets.map((f, key) => {
-                const index = parseInt(key, 10) / assets.length;
+                const index = Number(key) / assets.length;
                 const r = ICONS_CONTAINER_WIDTH / 2;
                 const left = 210 + r * Math.cos(2 * Math.PI * index);
                 const top = 210 + r * Math.sin(2 * Math.PI * index);
-                {/* return <div className={styles.box} style={{ left, top }} />; */}
+                {/* return <div className={styles.box} style={{ left, top }} />; */ }
                 return React.cloneElement(f, {
                   key,
                   style: { left, top },
